@@ -1,20 +1,98 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      <ion-icon name="map-outline" slot="start"></ion-icon>
+      Trazador de Rutas GPS
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="fondo-gradiente">
+    
+    <div class="mapa-container">
+      <div id="mapId"></div>
+      
+      <div class="estado-ubicacion" id="estadoGPS">
+        <ion-icon name="location-outline"></ion-icon>
+        <span>Mapa listo - Presiona "Obtener Punto"</span>
+      </div>
+    </div>
+    <ion-card class="info-card">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="navigate-circle-outline"></ion-icon>
+          Control de Ruta
+        </ion-card-title>
+        <ion-card-subtitle>
+          
+        </ion-card-subtitle>
+      </ion-card-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+      <ion-card-content>
+        
+      
+        <div class="contador-puntos" id="contadorPanel">
+          <ion-icon name="pin-outline" color="primary"></ion-icon>
+          <span>Puntos guardados: <strong id="contadorValor">0</strong></span>
+        </div>
+
+        <div class="botones-container">
+          <ion-button 
+            (click)="obtenerPunto()" 
+            expand="block" 
+            color="primary"
+            class="boton-punto"
+            id="btnPunto">
+            <ion-icon name="locate-outline" slot="start"></ion-icon>
+            Obtener Punto
+          </ion-button>
+
+          <ion-button 
+            (click)="dibujarRuta()" 
+            expand="block" 
+            color="success"
+            class="boton-ruta"
+            id="btnRuta">
+            <ion-icon name="map-outline" slot="start"></ion-icon>
+            Dibujar Ruta
+          </ion-button>
+
+          <ion-button 
+            (click)="limpiarPuntos()" 
+            expand="block" 
+            color="danger"
+            fill="outline"
+            class="boton-limpiar">
+            <ion-icon name="trash-outline" slot="start"></ion-icon>
+            Limpiar Puntos
+          </ion-button>
+        </div>
+
+        <div class="coordenadas-panel" id="panelCoordenadas" style="display: none;">
+          <div class="coordenada-item">
+            <ion-icon name="north-outline" color="success"></ion-icon>
+            <span>Latitud: <strong id="latitudValor">---</strong></span>
+          </div>
+          <div class="coordenada-item">
+            <ion-icon name="east-outline" color="success"></ion-icon>
+            <span>Longitud: <strong id="longitudValor">---</strong></span>
+          </div>
+          <div class="precision-item">
+            <ion-icon name="fitness-outline" color="medium"></ion-icon>
+            <span>Precisión: <span id="precisionValor">---</span> metros</span>
+          </div>
+        </div>
+
+       
+      </ion-card-content>
+    </ion-card>
+
+    <div class="footer-decorativo">
+      <ion-text color="light">
+        <small></small>
+      </ion-text>
+    </div>
+
   </div>
 </ion-content>

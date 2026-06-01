@@ -1,27 +1,196 @@
-#container {
-  text-align: center;
 
+$primary-color: #3880ff;
+$gradient-start: #667eea;
+$gradient-end: #764ba2;
+
+.fondo-gradiente {
+  min-height: 100%;
+  background: linear-gradient(135deg, $gradient-start 0%, $gradient-end 100%);
+  padding-bottom: 20px;
+}
+
+.mapa-container {
+  position: relative;
+  margin: 15px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+#mapId {
+  height: 40vh;
+  width: 100%;
+  min-height: 280px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.estado-ubicacion {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: white;
+  z-index: 1000;
+  
+  ion-icon {
+    font-size: 14px;
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.info-card {
+  margin: 15px;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.5s ease-out;
+  
+  ion-card-header {
+    text-align: center;
+    
+    ion-card-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: $primary-color;
+      
+      ion-icon {
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+    }
+    
+    ion-card-subtitle {
+      font-size: 0.8rem;
+      margin-top: 5px;
+    }
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+.contador-puntos {
+  background: linear-gradient(135deg, #e8f0fe, #d4e4fc);
+  border-radius: 50px;
+  padding: 10px 16px;
+  text-align: center;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  
+  ion-icon {
+    font-size: 24px;
+  }
+  
+  strong {
+    font-size: 1.4rem;
+    color: $primary-color;
+    margin-left: 5px;
+  }
+}
 
-  color: #8c8c8c;
+.botones-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 15px;
+}
 
+.boton-punto, .boton-ruta {
+  --border-radius: 50px;
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   margin: 0;
 }
 
-#container a {
-  text-decoration: none;
+.boton-limpiar {
+  --border-radius: 50px;
+  --border-color: #dc3545;
+  --color: #dc3545;
+  margin-top: 5px;
+}
+
+.coordenadas-panel {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 12px;
+  margin: 15px 0;
+  animation: fadeInUp 0.4s ease-out;
+  
+  .coordenada-item, .precision-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    font-size: 13px;
+    border-bottom: 1px solid #e9ecef;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    ion-icon {
+      font-size: 18px;
+    }
+    
+    strong {
+      color: $primary-color;
+    }
+  }
+}
+
+.consejos {
+  text-align: center;
+  padding: 12px;
+  background: #e8f0fe;
+  border-radius: 15px;
+  margin-top: 10px;
+  
+  ion-icon {
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  
+  small {
+    display: block;
+    line-height: 1.4;
+  }
+}
+
+.footer-decorativo {
+  text-align: center;
+  padding: 15px;
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
